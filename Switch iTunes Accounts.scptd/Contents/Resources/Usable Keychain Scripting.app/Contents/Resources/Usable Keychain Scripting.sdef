@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
+<dictionary title="Dictionary">
+	<suite name="Usable Keychain Suite" code="xKey" description="Keychain scriptability.">
+		<enumeration name="enon" code="enon">
+			<enumerator name="None" code="none"/>
+		</enumeration>
+		<enumeration name="eprt" code="eprt">
+			<enumerator name="FTP" code="ftp " description="File Transfer Protocol"/>
+			<enumerator name="HTTP" code="http" description="Hypertext Transfer Protocol"/>
+			<enumerator name="IRC" code="irc " description="Internet Relay Chat"/>
+			<enumerator name="NNTP" code="nntp" description="Network News Transfer Protocol"/>
+			<enumerator name="POP3" code="pop3" description="Post Office Protocol"/>
+			<enumerator name="SMTP" code="smtp" description="Simple Mail Transfer Protocol"/>
+			<enumerator name="SOCKS" code="sox " description="SOCKS Proxy"/>
+			<enumerator name="IMAP" code="imap" description="IMAP"/>
+			<enumerator name="LDAP" code="ldap" description="LDAP"/>
+			<enumerator name="AppleTalk" code="atlk" description="AFP over AppleTalk"/>
+			<enumerator name="AFP" code="afp " description="AFP"/>
+			<enumerator name="Telnet" code="teln" description="Telnet"/>
+			<enumerator name="SSH" code="ssh " description="SSH"/>
+			<enumerator name="FTPS" code="ftps" description="FTPS (FTP over TLS/SSL)"/>
+			<enumerator name="FTPAccount" code="ftpa" description="An FTP account (?) "/>
+			<enumerator name="HTTPS" code="htps" description="HTTPS (HTTP over TLS/SSL)"/>
+			<enumerator name="HTTP Proxy" code="htpx" description="HTTP Proxy"/>
+			<enumerator name="HTTPS Proxy" code="htsx" description="HTTPS Proxy"/>
+			<enumerator name="FTP Proxy" code="ftpx" description="FTP Proxy"/>
+			<enumerator name="SMB" code="smb " description="Server Message Block"/>
+			<enumerator name="RTSP" code="rtsp" description="Real-Time Streaming Protocol"/>
+			<enumerator name="RTSP Proxy" code="rtsx" description="RTSP Proxy"/>
+			<enumerator name="DAAP" code="daap" description="Digital Audio Access Protocol"/>
+			<enumerator name="EPPC" code="eppc" description="Remote Apple Events"/>
+			<enumerator name="IPP" code="ipp " description="Internet Printing Protocol"/>
+			<enumerator name="NNTPS" code="ntps" description="NNTPS (NNTP over TLS/SSL)"/>
+			<enumerator name="LDAPS" code="ldps" description="LDAPS (LDAP over TLS/SSL)"/>
+			<enumerator name="TelnetS" code="tels" description="Telnet over TLS/SSL"/>
+			<enumerator name="IMAPS" code="imps" description="IMAPS (IMAP4 over TLS/SSL)"/>
+			<enumerator name="IRCS" code="ircs" description="IRCS (IRC over TLS/SSL)"/>
+			<enumerator name="POP3S" code="ircs" description="POP3S (POP3 over TLS/SSL)"/>
+			<enumerator name="none" code="none" description="none"/>
+			<enumerator name="unknown" code="????" description="Not a recognized protocol"/>
+			<enumerator name="Adium Chat" code="AdIM" description="Adium Chat URL"/>
+			<enumerator name="Secure FTP" code="sftp" description="Secure FTP"/>
+		</enumeration>
+		<enumeration name="eath" code="eath">
+			<enumerator name="NTLM" code="ntlm" description="NTLM"/>
+			<enumerator name="MSN" code="msna" description="MSN"/>
+			<enumerator name="DPA" code="dpaa" description="DPA"/>
+			<enumerator name="RPA" code="rpaa" description="RPA"/>
+			<enumerator name="HTTP digest" code="httd" description="HTTP Digest"/>
+			<enumerator name="HTML form" code="form" description="HTML Form"/>
+			<enumerator name="default" code="dflt" description="default"/>
+			<enumerator name="unknown" code="????" description="the authentication form can not be determined?"/>
+			<enumerator name="HTTP basic" code="http" description="HTTP Basic"/>
+		</enumeration>
+		<enumeration name="ecls" code="ecls">
+			<enumerator name="Generic" code="cgen" description="generic key class"/>
+			<enumerator name="AppleShare" code="cask" description="AppleShare key class"/>
+			<enumerator name="Internet" code="cint" description="Internet key class"/>
+		</enumeration>
+		<class name="application" code="capp" description="The Keychain Scripting application">
+			<cocoa class="NSApplication"/>
+			<element type="keychain">
+				<cocoa key="keychains"/>
+			</element>
+			<property name="name" code="pnam" description="the name of the Keychain Scripting application" type="text" access="r"/>
+			<property name="current keychain" code="pckc" description="the keychain currently in use (also called the default keychain)" type="keychain">
+				<cocoa key="defaultKeychain"/>
+			</property>
+			<property name="version" code="vers" description="the version of the Keychain Scripting application" type="text" access="r"/>
+		</class>
+		<class name="keychain item" code="xKey" description="Every key" plural="keychain items">
+			<cocoa class="RSKeychainItem"/>
+			<property name="name" code="pnam" description="the name of this key" type="text">
+				<cocoa key="name"/>
+			</property>
+			<property name="account" code="pact" description="the account (also known as user name or login name)" type="text">
+				<cocoa key="keychainAttributeKeyIDacct"/>
+			</property>
+			<property name="creation date" code="ascd" description="the time this item was created" type="date" access="r">
+				<cocoa key="keychainAttributeKeyIDcdat"/>
+			</property>
+			<property name="modification date" code="asmo" description="the time this item was last modified" type="date" access="r">
+				<cocoa key="keychainAttributeKeyIDmdat"/>
+			</property>
+			<property name="description" code="pdsc" description="the description (or kind) of the key" type="text">
+				<cocoa key="keychainAttributeKeyIDdesc"/>
+			</property>
+			<property name="comment" code="comt" description="a user-supplied comment about this item" type="text">
+				<cocoa key="keychainAttributeKeyIDdescicmt"/>
+			</property>
+			<property name="file type" code="asty" description="an OSType identifying a data type for which an icon exists" type="text">
+				<cocoa key="keychainAttributeKeyIDtype"/>
+			</property>
+			<property name="creator type" code="fcrt" description="an OSType identifying the application that created the key" type="text">
+				<cocoa key="keychainAttributeKeyIDcrtr"/>
+			</property>
+			<property name="custom icon" code="pcsi" description="true if this key should use a custom icon, found using creator and file type" type="boolean">
+				<cocoa key="keychainAttributeKeyIDcusi"/>
+			</property>
+			<property name="invisible" code="pinv" description="true if this is an invisible item (not to be displayed)" type="boolean">
+				<cocoa key="keychainAttributeKeyIDinvi"/>
+			</property>
+			<property name="negative" code="pneg" description="true if this is a key which should not be used" type="boolean">
+				<cocoa key="keychainAttributeKeyIDnega"/>
+			</property>
+			<property name="password" code="ppas" description="the password" type="text">
+				<cocoa key="itemData"/>
+			</property>
+		</class>
+		<class name="appleshare password" code="xAsk" description="A key to an AppleShare file server" plural="appleshare passwords" inherits="keychain item">
+			<cocoa class="RSKeychainAppleSharePasswordItem"/>
+			<property name="zone" code="pazn" description="the AppleTalk zone name (if server is on an AppleTalk network) " type="text">
+				<cocoa key="zone"/>
+			</property>
+			<property name="address" code="padr" description="the DNS host name or IP address (if server is on a TCP/IP network)" type="text">
+				<cocoa key="keychainAttributeKeyIDaddr"/>
+			</property>
+			<property name="server" code="psrv" description="the file server name" type="text">
+				<cocoa key="keychainAttributeKeyIDsrvr"/>
+			</property>
+			<property name="volume" code="pvol" description="the volume to mount" type="text">
+				<cocoa key="keychainAttributeKeyIDvlme"/>
+			</property>
+		</class>
+		<class name="internet password" code="xInt" description="A key to an Internet server" inherits="keychain item">
+			<cocoa class="RSKeychainInternetPasswordItem"/>
+			<property name="server" code="psrv" description="the server name" type="text">
+				<cocoa key="keychainAttributeKeyIDsrvr"/>
+			</property>
+			<property name="path" code="ppth" description="the path to the file or directory" type="text">
+				<cocoa key="keychainAttributeKeyIDpath"/>
+			</property>
+			<property name="security domain" code="pscd" description="the security domain" type="text">
+				<cocoa key="keychainAttributeKeyIDsdmn"/>
+			</property>
+			<property name="port" code="pprt" description="the TCP/IP port number" type="integer">
+				<cocoa key="keychainAttributeKeyIDport"/>
+			</property>
+			<property name="protocol" code="pptl" description="the protocol">
+				<cocoa key="keychainAttributeKeyIDptcl"/>
+				<type type="eprt"/>
+				<type type="text"/>
+			</property>
+			<property name="authentication" code="path" description="the authentication scheme" type="eath">
+				<cocoa key="keychainAttributeKeyIDatyp"/>
+			</property>
+		</class>
+		<class name="generic item" code="xGen" description="A key to an application or service" inherits="keychain item">
+			<cocoa class="RSKeychainGenericPasswordItem"/>
+			<property name="service" code="psvc" description="the service name" type="text">
+				<cocoa key="keychainAttributeKeyIDsvce"/>
+			</property>
+		</class>
+		<class name="certificate item" code="xCrt" description="a certificate item" inherits="keychain item">
+			<cocoa class="RSKeychainCertificateItem"/>
+		</class>
+		<class name="keychain" code="xKch" description="Every keychain" plural="keychains">
+			<cocoa class="RSKeychain"/>
+			<element type="keychain item">
+				<cocoa key="internetItems"/>
+				<accessor style="index"/>
+			</element>
+			<element type="internet password">
+				<cocoa key="internetItems"/>
+				<accessor style="index"/>
+			</element>
+			<element type="generic item">
+				<cocoa key="genericItems"/>
+				<accessor style="index"/>
+			</element>
+			<element type="appleshare password">
+				<cocoa key="appleShareItems"/>
+				<accessor style="index"/>
+			</element>
+			<element type="certificate item">
+				<cocoa key="certificateItems"/>
+				<accessor style="index"/>
+			</element>
+			<property name="name" code="pnam" description="the name of the keychain" type="text" access="r">
+				<cocoa key="name"/>
+			</property>
+			<property name="locked" code="aslk" description="true if the keychain is locked, false if the keychain is unlocked" type="boolean" access="r">
+				<cocoa key="locked"/>
+			</property>
+			<responds-to name="unlock">
+				<cocoa method="handleUnlockCommand:"/>
+			</responds-to>
+			<responds-to name="lock">
+				<cocoa method="handleLockCommand:"/>
+			</responds-to>
+		</class>
+		<command name="lock" code="aevtlock" description="Lock a keychain">
+			<cocoa class="NSLockKeychainCommand"/>
+			<direct-parameter description="the keychain to lock (lock all keychains if not specified)" type="keychain" optional="yes"/>
+			<result description="success of the command" type="boolean"/>
+		</command>
+		<command name="unlock" code="aevtunlk" description="Unlock a keychain">
+			<cocoa class="NSUnlockKeychainCommand"/>
+			<direct-parameter description="the keychain to unlock (unlock current keychain if not specified)" type="keychain" optional="yes"/>
+			<parameter name="with password" code="akcp" description="the password for this keychain - if omitted, a dialog will be presented" type="text" optional="yes">
+				<cocoa key="keychainPassword"/>
+			</parameter>
+			<result description="whether the command was successful" type="boolean"/>
+		</command>
+	</suite>
+	<!--
+		STANDARD SUITE
+	-->
+	<suite name="Standard Suite" code="core" description="Common classes and commands for all applications.">
+		<cocoa name="NSCoreSuite"/>
+		<!--
+				According to TN2106, 'open' should return the resulting document
+				object.  However, the Cocoa implementation does not do this yet.
+			<result type="specifier"/>
+			-->
+		<enumeration name="save options" code="savo">
+			<enumerator name="yes" code="yes " description="Save the file."/>
+			<enumerator name="no" code="no  " description="Do not save the file."/>
+			<enumerator name="ask" code="ask " description="Ask the user whether or not to save the file."/>
+		</enumeration>
+		<enumeration name="printing error handling" code="enum">
+			<enumerator name="standard" code="lwst" description="Standard PostScript error handling"/>
+			<enumerator name="detailed" code="lwdt" description="print a detailed report of PostScript errors"/>
+		</enumeration>
+		<record-type name="print settings" code="pset">
+			<property name="copies" code="lwcp" description="the number of copies of a document to be printed" type="integer">
+				<cocoa key="NSCopies"/>
+			</property>
+			<property name="collating" code="lwcl" description="Should printed copies be collated?" type="boolean">
+				<cocoa key="NSMustCollate"/>
+			</property>
+			<property name="starting page" code="lwfp" description="the first page of the document to be printed" type="integer">
+				<cocoa key="NSFirstPage"/>
+			</property>
+			<property name="ending page" code="lwlp" description="the last page of the document to be printed" type="integer">
+				<cocoa key="NSLastPage"/>
+			</property>
+			<property name="pages across" code="lwla" description="number of logical pages laid across a physical page" type="integer">
+				<cocoa key="NSPagesAcross"/>
+			</property>
+			<property name="pages down" code="lwld" description="number of logical pages laid out down a physical page" type="integer">
+				<cocoa key="NSPagesDown"/>
+			</property>
+			<property name="error handling" code="lweh" description="how errors are handled" type="printing error handling">
+				<cocoa key="NSDetailedErrorReporting"/>
+			</property>
+			<property name="fax number" code="faxn" description="for fax number" type="text">
+				<cocoa key="NSFaxNumber"/>
+			</property>
+			<property name="target printer" code="trpr" description="for target printer" type="text">
+				<cocoa key="NSPrinterName"/>
+			</property>
+		</record-type>
+		<class name="window" code="cwin" description="A window.">
+			<cocoa class="NSWindow"/>
+			<property name="name" code="pnam" description="The full title of the window." type="text" access="r">
+				<cocoa key="title"/>
+			</property>
+			<property name="id" code="ID  " description="The unique identifier of the window." type="integer" access="r">
+				<cocoa key="uniqueID"/>
+			</property>
+			<property name="index" code="pidx" description="The index of the window, ordered front to back." type="integer">
+				<cocoa key="orderedIndex"/>
+			</property>
+			<property name="bounds" code="pbnd" description="The bounding rectangle of the window." type="rectangle">
+				<cocoa key="boundsAsQDRect"/>
+			</property>
+			<property name="closeable" code="hclb" description="Whether the window has a close box." type="boolean" access="r">
+				<cocoa key="hasCloseBox"/>
+			</property>
+			<property name="minimizable" code="ismn" description="Whether the window can be minimized." type="boolean" access="r">
+				<cocoa key="isMiniaturizable"/>
+			</property>
+			<property name="minimized" code="pmnd" description="Whether the window is currently minimized." type="boolean">
+				<cocoa key="isMiniaturized"/>
+			</property>
+			<property name="resizable" code="prsz" description="Whether the window can be resized." type="boolean" access="r">
+				<cocoa key="isResizable"/>
+			</property>
+			<property name="visible" code="pvis" description="Whether the window is currently visible." type="boolean">
+				<cocoa key="isVisible"/>
+			</property>
+			<property name="zoomable" code="iszm" description="Whether the window can be zoomed." type="boolean" access="r">
+				<cocoa key="isZoomable"/>
+			</property>
+			<property name="zoomed" code="pzum" description="Whether the window is currently zoomed." type="boolean">
+				<cocoa key="isZoomed"/>
+			</property>
+			<property name="document" code="docu" description="The document whose contents are being displayed in the window." type="document" access="r"/>
+			<responds-to name="close">
+				<cocoa method="handleCloseScriptCommand:"/>
+			</responds-to>
+			<responds-to name="print">
+				<cocoa method="handlePrintScriptCommand:"/>
+			</responds-to>
+			<responds-to name="save">
+				<cocoa method="handleSaveScriptCommand:"/>
+			</responds-to>
+		</class>
+		<class name="document" code="docu" description="A Sketch document.">
+			<cocoa class="NSDocument"/>
+			<property name="name" code="pnam" description="The document&apos;s name." type="text" access="r">
+				<cocoa key="displayName"/>
+			</property>
+			<property name="modified" code="imod" description="Has the document been modified since the last save?" type="boolean" access="r">
+				<cocoa key="isDocumentEdited"/>
+			</property>
+			<property name="file" code="file" description="The document&apos;s location on disk." type="file" access="r">
+				<cocoa key="fileURL"/>
+			</property>
+			<responds-to name="close">
+				<cocoa method="handleCloseScriptCommand:"/>
+			</responds-to>
+			<responds-to name="print">
+				<cocoa method="handlePrintScriptCommand:"/>
+			</responds-to>
+			<responds-to name="save">
+				<cocoa method="handleSaveScriptCommand:"/>
+			</responds-to>
+		</class>
+		<command name="open" code="aevtodoc" description="Open a document."/>
+		<command name="close" code="coreclos" description="Close a document.">
+			<cocoa class="NSCloseCommand"/>
+			<direct-parameter description="the document(s) or window(s) to close." type="specifier"/>
+			<parameter name="saving" code="savo" description="Whether or not changes should be saved before closing." type="save options" optional="yes">
+				<cocoa key="SaveOptions"/>
+			</parameter>
+			<parameter name="saving in" code="kfil" description="The file in which to save the document." type="file" optional="yes">
+				<cocoa key="File"/>
+			</parameter>
+		</command>
+		<command name="save" code="coresave" description="Save a document.">
+			<direct-parameter description="The document(s) or window(s) to save." type="specifier"/>
+			<parameter name="in" code="kfil" description="The file in which to save the document." type="file" optional="yes">
+				<cocoa key="File"/>
+			</parameter>
+			<parameter name="as" code="fltp" description="The type of file to save." type="text" optional="yes">
+				<cocoa key="FileType"/>
+			</parameter>
+		</command>
+		<command name="print" code="aevtpdoc" description="Print a document.">
+			<parameter name="with properties" code="prdt" description="The print settings to use." type="print settings" optional="yes">
+				<cocoa key="PrintSettings"/>
+			</parameter>
+			<parameter name="print dialog" code="pdlg" description="Should the application show the print dialog?" type="boolean" optional="yes">
+				<cocoa key="ShowPrintDialog"/>
+			</parameter>
+		</command>
+		<command name="quit" code="aevtquit" description="Quit the application.">
+			<cocoa class="NSQuitCommand"/>
+			<parameter name="saving" code="savo" description="Whether or not changed documents should be saved before closing." type="save options" optional="yes">
+				<cocoa key="SaveOptions"/>
+			</parameter>
+		</command>
+		<command name="count" code="corecnte" description="Return the number of elements of a particular class within an object.">
+			<cocoa class="NSCountCommand"/>
+			<direct-parameter description="the object whose elements are to be counted" type="specifier"/>
+			<parameter name="each" code="kocl" description="The class of objects to be counted." type="type" optional="yes">
+				<cocoa key="ObjectClass"/>
+			</parameter>
+			<result description="the number of elements" type="integer"/>
+		</command>
+		<command name="delete" code="coredelo" description="Delete an object.">
+			<cocoa class="NSDeleteCommand"/>
+			<direct-parameter description="the object to delete" type="specifier"/>
+		</command>
+		<command name="duplicate" code="coreclon" description="Copy object(s) and put the copies at a new location.">
+			<cocoa class="NSCloneCommand"/>
+			<direct-parameter description="the object(s) to duplicate" type="specifier"/>
+			<parameter name="to" code="insh" description="The location for the new object(s)." type="location specifier" optional="yes">
+				<cocoa key="ToLocation"/>
+			</parameter>
+			<parameter name="with properties" code="prdt" description="Properties to be set in the new duplicated object(s)." type="record" optional="yes">
+				<cocoa key="WithProperties"/>
+			</parameter>
+			<result description="the duplicated object(s)" type="specifier"/>
+		</command>
+		<command name="exists" code="coredoex" description="Verify if an object exists.">
+			<cocoa class="NSExistsCommand"/>
+			<direct-parameter description="the object in question" type="any"/>
+			<result description="true if it exists, false if not" type="boolean"/>
+		</command>
+		<command name="make" code="corecrel" description="Make a new object.">
+			<cocoa class="NSCreateCommand"/>
+			<parameter name="new" code="kocl" description="The class of the new object." type="type">
+				<cocoa key="ObjectClass"/>
+			</parameter>
+			<parameter name="at" code="insh" description="The location at which to insert the object." type="location specifier" optional="yes">
+				<cocoa key="Location"/>
+			</parameter>
+			<parameter name="with data" code="data" description="The initial contents of the object." type="any" optional="yes">
+				<cocoa key="ObjectData"/>
+			</parameter>
+			<parameter name="with properties" code="prdt" description="The initial values for properties of the object." type="record" optional="yes">
+				<cocoa key="KeyDictionary"/>
+			</parameter>
+			<result description="to the new object" type="specifier"/>
+		</command>
+		<command name="move" code="coremove" description="Move object(s) to a new location.">
+			<cocoa class="NSMoveCommand"/>
+			<direct-parameter description="the object(s) to move" type="specifier"/>
+			<parameter name="to" code="insh" description="The new location for the object(s)." type="location specifier">
+				<cocoa key="ToLocation"/>
+			</parameter>
+			<result description="the moved object(s)" type="specifier"/>
+		</command>
+	</suite>
+</dictionary>

@@ -1,0 +1,4 @@
+CFBundleName = "TuneSwitch";
+CFBundleShortVersionString = "1.3";
+CFBundleGetInfoString = "TuneSwitch version 1.3 Copyright 2011 Bastian Woelfle";
+NSHumanReadableCopyright = "Copyright 2011 Bastian Woelfle.";
